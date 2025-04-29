@@ -18,14 +18,19 @@ const CreateSnippetForm = () => {
   });
 
   return (
-    <form action={formAction}>
+    <form action={formAction} className="space-y-6 p-6 border rounded-lg shadow-md bg-white">
       <div>
-        <Label htmlFor="title">Title</Label>
-        <Input type="text" name="title" id="title"/>
+        <Label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">Title</Label>
+        <Input
+          type="text"
+          name="title"
+          id="title"
+          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
       </div>
 
-      <div className="mt-4">
-        <Label htmlFor="code">Code</Label>
+      <div>
+        <Label htmlFor="code" className="block text-sm font-medium text-gray-700 mb-1">Code</Label>
         <Textarea
           ref={hiddenTextAreaRef}
           name="code"
@@ -45,13 +50,21 @@ const CreateSnippetForm = () => {
       </div>
 
       {formState.message && (
-        <p className="text-red-500 mt-2">{formState.message}</p>
+        <p className="p-3 font-semibold text-red-700 bg-red-100 border border-red-400 rounded-md">
+          {formState.message}
+        </p>
       )}
 
-      <Button type="submit" className="mt-6">
-        Create Snippet
-      </Button>
+      <div className="flex justify-center">
+        <Button
+          type="submit"
+          className="text-white p-2 rounded-md bg-gray-800 hover:bg-gray-600 transition-colors"
+        >
+          Create Snippet
+        </Button>
+      </div>
     </form>
+
   );
 };
 
